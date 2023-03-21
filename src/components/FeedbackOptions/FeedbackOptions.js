@@ -1,30 +1,26 @@
-export const FeedbackOptions = ({ onLeaveFeedback }) => {
-    const typeFeedback = {
-      good: 'good',
-      neutral: 'neutral',
-      bad: 'bad',
-    };
+import PropTypes from 'prop-types';
+
+export const FeedbackOptions = ({
+  onLeaveFeedback,
+  options: { good, neutral, bad },
+}) => {
   return (
     <>
-      <button
-        type="button"
-        // feedbackType="good"
-        onClick={() => onLeaveFeedback(typeFeedback.good)}
-      >
+      <button type="button" onClick={() => onLeaveFeedback(good)}>
         Good
       </button>
-      <button
-        type="button"
-        onClick={() => onLeaveFeedback(typeFeedback.neutral)}
-      >
+      <button type="button" onClick={() => onLeaveFeedback(neutral)}>
         Neutral
       </button>
-      <button
-        type="button"
-        onClick={() => onLeaveFeedback(typeFeedback.bad)}
-      >
+      <button type="button" onClick={() => onLeaveFeedback(bad)}>
         Bad
       </button>
     </>
   );
 };
+
+FeedbackOptions.protoType = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+
+}
