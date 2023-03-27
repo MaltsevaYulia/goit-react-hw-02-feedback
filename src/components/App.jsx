@@ -13,6 +13,7 @@ export class App extends Component {
 
   countFeedback = feedback => {
     this.setState(prevState => {
+      console.log(feedback);
       return { [feedback]: prevState[`${feedback}`] + 1 };
     });
   };
@@ -33,7 +34,7 @@ export class App extends Component {
       <div>
         <SectionTitle title="Please leave feedback">
           <FeedbackOptions
-            options={{ good: 'good', neutral: 'neutral', bad: 'bad' }}
+            options={['good', 'neutral', 'bad' ]}
             onLeaveFeedback={this.countFeedback}
           />
         </SectionTitle>
